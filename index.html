@@ -1,273 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="icon" href="https://img.hotimg.com/UR_Satellites-removebg-preview.th.png" type="image/png">
-  <meta name="google-site-verification" content="azthnYNKg3HDplNjwJN9vymVU-P18dp3iyE3FNFKORc" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7905341714144701"
-     crossorigin="anonymous"></script>
-  <title>UR Statellite Communicationns</title>
-  
-  
- <style>
-     
-      body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh; /* Ensure footer stays at the bottom */
-      background-color:black;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/urfrequency/orbitos/main/pics/orbitos3.png">
+<link rel="apple-touch-icon" href="https://i.ibb.co/nMMKcSWC/ur-logo.png">
+<script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Orbit OS </title>
+  <!-- Government theme: green ONLY on header/footer, navigation options added, anchor links -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    .header {
+    body {
+      background-color: #ffffff;
+      font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', system-ui, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.6;
       display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      letter-spacing: 0.2px;
+      scroll-behavior: smooth;
+    }
+
+    /* ---- HEADER : green only, black accents, formal government look ---- */
+    .official-header {
+      background-color: #0f3d0f;
+      background-image: linear-gradient(180deg, #0f3d0f 0%, #0a2f0a 100%);
+      border-bottom: 4px solid #1e561e;
+      padding: 0.8rem 2.5rem 0.5rem 2.5rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      color: #f0f7f0;
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
-      background-color:#333;
-      color: #fff;
-      position: relative;
-      z-index: 3; /* Ensure header stays on top */
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
     }
 
-    .logo {
+    .header-left {
       display: flex;
       align-items: center;
-      font-size: 24px;
-      font-weight: bold;
-      animation: slideIn 2s ease-out;
+      gap: 1.5rem;
     }
 
-    .logo img {
-      width: 40px;
-      height: 40px;
-      margin-right: 10px;
-      animation: logoAnimation 2s ease-in-out;
-    }
-
-    .nav-menu {
-      position: absolute;
-      top: 60px; /* Adjust based on header height */
-      left: 0;
-      background-color: #333;
-      width: 100%;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease;
-      z-index: 3; /* Ensure the navigation menu appears above the container */
-    }
-
-    .nav-menu ul {
-      display: flex;
-      list-style: none;
-      flex-direction: column; /* Stack items vertically */
-      padding: 10px 20px;
-    }
-
-    .nav-menu ul li {
-      margin: 10px 0; /* Space between items */
-      opacity: 0; /* Initially hidden */
-      transform: translateX(-100%); /* Start from left */
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-
-    .nav-menu.open {
-      max-height: 300px; /* Increased height for more items */
-    }
-
-    .nav-menu.open ul li {
-      opacity: 1; /* Fade in */
-      transform: translateX(0); /* Slide in */
-    }
-
-    .nav-menu ul li a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .nav-menu ul li a:hover {
-      color: #f4a261;
-    }
-
-    
-    .menu-icon {
-    display: block; /* Ensure it is block for smaller screens */
-    font-size: 30px;
-    cursor: pointer;
-    color: white; /* Make sure it's visible on a dark background */
-    z-index: 4; /* Ensure it's on top of other elements */
+    .logo-placeholder {
+  width: 58px;
+  height: 58px;
+  background-color: #0b2b0b;
+  border: 2px dashed #5b8c5b;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b3d0b3;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-image: url('https://raw.githubusercontent.com/urfrequency/orbitos/main/pics/2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(-50%);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .agency-name {
+      font-size: 1.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: #e0f0e0;
+      border-left: 2px solid #a0c8a0;
+      padding-left: 1.5rem;
+      font-family: 'Inter', 'Segoe UI', sans-serif;
     }
 
-    @keyframes logoAnimation {
-      from {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+    .header-classification {
+      background: #000000;
+      color: #c0dcc0;
+      padding: 0.5rem 1.8rem;
+      border-radius: 0px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 1.2px;
+      border: 1px solid #3b6b3b;
+      text-transform: uppercase;
+      background: #0a1f0a;
     }
-   
-       .container {
+
+    /* Navigation bar inside header */
+    .nav-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      padding: 0.5rem 0 0.2rem 0;
+      border-top: 1px solid #2a572a;
+      margin-top: 0.3rem;
+      justify-content: flex-start;
+    }
+
+    .nav-link {
+      color: #d4ebd4;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.2s;
+    }
+
+    .nav-link:hover {
+      border-bottom: 2px solid #b0d9b0;
+      color: #ffffff;
+    }
+
+    /* ---- main content ---- */
+    .container {
+      max-width: 1100px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+      flex: 1;
+      width: 100%;
+    }
+
+    .section-card {
+      background: #ffffff;
+      border: 1px solid #d4d4d4;
+      border-left: 5px solid #1a431a;
+      padding: 2rem 2.2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      background: #fefefe;
+      scroll-margin-top: 1.5rem;
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #121212;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-bottom: 2px solid #1b3f1b;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    .text-content {
+      font-size: 1.05rem;
+      color: #232323;
+      margin: 1.2rem 0;
+      text-align: justify;
+      line-height: 1.7;
+    }
+
+    .os-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .description {
+      flex: 2;
+      min-width: 260px;
+    }
+
+    .internal-logo-area {
+      flex: 1;
+      background: #f5f5f5;
+      border: 1px solid #c0c0c0;
+      padding: 1.2rem;
+      text-align: center;
+      min-width: 140px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       justify-content: center;
-      margin: 20px;
-      padding: 20px;
-      background: linear-gradient(to right, black 40%, rgba(0, 0, 0, 0.7) 50%, transparent 60%), url('https://i.pinimg.com/736x/c8/4b/22/c84b224abe4028d3553f9a2aec848ba0.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
+      color: #4a4a4a;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      background-color: #f9f9f9;
     }
 
-    .container h1 {
-      font-size: 36px;
+    .img-slot {
+  width: 130px;
+  height: 130px;
+  background: #eaeaea;
+  border: 1px dashed #7a7a7a;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #5c5c5c;
+  font-size: 0.7rem;
+  background-image: url('https://raw.githubusercontent.com/urfrequency/orbitos/main/pics/2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+    .outlook-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      background: #f8f8f8;
+      border: 1px solid #cdcdcd;
+      padding: 1.5rem;
+      margin: 1.8rem 0;
     }
 
-    .container p {
-      max-width: 600px;
-      line-height: 1.5;
+    .outlook-img-placeholder {
+  width: 72px;
+  height: 72px;
+  background: #e2e2e2;
+  border: 1px dashed #5f5f5f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: #3e3e3e;
+  background-image: url('https://raw.githubusercontent.com/urfrequency/orbitos/main/pics/Outlook.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+    .preinstall-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0a2b0a;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
     }
-    
-   
-    /* Footer styles */
-    .footer {
-      background-color: #333;
-      color: white;
+
+    .download-section {
+      background: #ffffff;
+      border: 1px solid #b0b0b0;
+      padding: 2rem;
       text-align: center;
-      padding: 20px 0;
-      margin-top: auto; /* Push footer to the bottom */
     }
 
-    .footer a {
-      color: #f4a261;
+    .iso-download-btn {
+      background: #121212;
+      border: 2px solid #1f451f;
+      color: #f0f7f0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 0.9rem 2.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      cursor: pointer;
       text-decoration: none;
-      margin: 0 10px;
+      display: inline-block;
+      margin: 1.3rem 0;
+      background: #0f1a0f;
+      transition: 0.2s;
+      border-radius: 2px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
-        .card-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    flex-wrap: nowrap; /* Ensure that the cards do not wrap */
-}
+    .iso-download-btn:hover {
+      background: #1f351f;
+      border-color: #3e7a3e;
+      color: white;
+    }
 
-.card {
-    text-align: center;
-    margin: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+    .taskbar-reference {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      margin: 1.3rem 0 0.5rem;
+      font-size: 0.9rem;
+      color: #2b2b2b;
+    }
 
-.card:hover {
-    transform: scale(1.1);
-}
+    .taskbar-icon-slot {
+      width: 32px;
+      height: 32px;
+      background: #d9d9d9;
+      border: 1px dashed #4d4d4d;
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
 
-.card img {
-    width: 100px;
-    height: 100px;
-    display: block;
-    margin: 0 auto;
-}
+    hr {
+      border: 0.5px solid #c0c0c0;
+      margin: 1.8rem 0;
+    }
 
-.card p {
-    margin: 10px 0 0;
-    font-size: 16px;
-}
-     
+    /* ---- FOOTER : green only ---- */
+    .government-footer {
+      background-color: #0f3d0f;
+      background-image: linear-gradient(180deg, #0f3d0f 0%, #0b2f0b 100%);
+      border-top: 4px solid #1e561e;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      color: #e6f0e6;
+      font-size: 0.9rem;
+      letter-spacing: 0.7px;
+      margin-top: 2rem;
+    }
 
-.container1 img {
-    max-width: 300px;
-    height: auto;
-    margin-right: 20px;
-}
-.container img {
-    max-width: 300px;
-    height: auto;
-    margin-right: 20px;
-}
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin: 0.5rem 0;
+      color: #caddca;
+    }
 
-.details {
-    display: flex;
-    align-items: flex-start;
-}
+    .footer-note {
+      font-size: 0.8rem;
+      color: #b0ccb0;
+      margin-top: 0.6rem;
+      text-transform: uppercase;
+    }
 
-.text-content h1 {
-    margin-bottom: 10px;
-}
+    @media (max-width: 700px) {
+      .official-header {
+        padding: 0.8rem 1.5rem;
+      }
+      .header-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .agency-name {
+        border-left: none;
+        padding-left: 0;
+        font-size: 1.3rem;
+      }
+      .nav-bar {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- GREEN HEADER with navigation options -->
+  <header class="official-header">
+    <div class="header-top">
+      <div class="header-left">
+        <!-- 1.png = main logo for website. Replace with img tag -->
+        <div class="logo-placeholder" id="mainLogoPlaceholder" title="Main website logo (1.png)">
+        </div>
+        <span class="agency-name">Orbit OS</span>
+      </div>
 
-.text-content p {
-    margin: 0;
-    max-width: 600px;
-}
-
-     
- </style>
-  
-  
-  <body>
-      
-      
-       <header class="header">
-      
-    <div class="logo">
-      <img src="https://img.hotimg.com/UR_Satellites-removebg-preview.png" alt="UR-Frequency-Old-Logo" />
-      UR Satellite
     </div>
-    <nav class="nav-menu">
-      <ul>
-        <li><a href="https://urmathematician.github.io/ur_satellite_communications/">Home</a></li>
-        <li><a href="https://urmathematician.github.io/ur_frequency/carriers">Internships and Carrires</a></li>
-        <li><a href="">UR Industries</a></li>
-        <li><a href="https://urmathematician.github.io/urstore/">UR Store</a></li>
-        
-        <li><a href="https://urmathematician.github.io/ur_frequency/team">Our Team</a></li>
-        <li><a href="https://urmathematician.github.io/ur_frequency/contact">Contact Us</a></li>
-      </ul>
+    <!-- Navigation: home, updates, download, how to download, contact -->
+    <nav class="nav-bar">
+      <a href="#home-section" class="nav-link">Home</a>
+      <a href="#updates-section" class="nav-link">Updates</a>
+      <a href="#download-section" class="nav-link">Download</a>
+      <a href="#howtodownload-section" class="nav-link">How to Download</a>
+      <a href="#contact-footer" class="nav-link">Contact</a>
     </nav>
-    <div class="menu-icon">&#9776;</div>
   </header>
 
-
-
-<div class="container">
-    <div class="details">
-        <img src="https://img.hotimg.com/UR_Satellites-removebg-preview.png" border="0" />
-        <div class="text-content">
-            <h1>UR Communication Satellite</h1>
-            <p>A communication base and best internet provider company </p>
+  <main class="container">
+    <!-- HOME = ORBIT OS : SECURE LINUX PLATFORM -->
+    <section id="home-section" class="section-card">
+      <h2>ORBIT OS : SECURE LINUX PLATFORM</h2>
+      <div class="os-details">
+        <div class="description">
+          <p class="text-content"><strong>USER-FRIENDLY · GOVERNMENT-GRADE STABILITY</strong><br>
+          Orbit OS is a Linux-based operating system designed for clarity, performance, and uncompromising security. Built on a hardened kernel, it delivers a seamless desktop experience while maintaining strict access controls. The interface eliminates unnecessary complexity, making it suitable for administrative workstations, secure terminals, and everyday productivity.</p>
+          <p class="text-content">Every component is verified. The system ships with essential utilities and a familiar workflow. No telemetry, no distractions — just a reliable platform for mission-critical tasks.</p>
         </div>
+        <div class="internal-logo-area">
+          <!-- 2.png = logo used inside website -->
+          <div class="img-slot" id="internalLogoSlot" title="Internal logo (2.png)">
+        
+          </div>
+          <span>ORBIT CORE IDENTITY</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATES = PRE-INSTALLED COMMUNICATION SUITE -->
+    <section id="updates-section" class="section-card">
+      <h2>PRE-INSTALLED COMMUNICATION SUITE</h2>
+      <div class="outlook-block">
+        <!-- Outlook.png = Linux official Outlook pre-installed -->
+        <div class="outlook-img-placeholder" id="outlookIconPlaceholder" title="Outlook for Linux (Outlook.png)">
+         
+        </div>
+        <div>
+          <span class="preinstall-title">MICROSOFT OUTLOOK · LINUX NATIVE</span>
+          <p style="color:#2d2d2d; margin-top:0.4rem;">Officially pre-installed on Orbit OS. Configured for enterprise mail, calendar, and secure collaboration. No additional setup required. Compliant with federal communication standards.</p>
+        </div>
+      </div>
+      <p style="font-size:0.9rem; color:#3b3b3b;">Outlook for Linux is integrated at system level. Launch from the taskbar or application menu. Regular updates are provided through the secure repository.</p>
+    </section>
+
+    <!-- DOWNLOAD = DOWNLOAD ORBIT OS IMAGE (also target for how to download) -->
+    <section id="download-section" class="section-card download-section">
+      <h2 style="text-align: left; display: block;">DOWNLOAD ORBIT OS IMAGE</h2>
+      <p style="font-size:1.1rem; margin:1.2rem 0; color:#1e1e1e;">Current stable release: <strong>Orbit OS 24.04 LTS (Long Term Support)</strong><br>Kernel 6.8 · Integrity Check SHA256 available</p>
+      
+      <a href="#" class="iso-download-btn" onclick="alert('Orbit OS ISO download initiated.\nFile: orbit-os-24.04-lts-amd64.iso\n(Simulated connection)'); return false;">
+        DOWNLOAD ISO (2.7 GB)
+      </a>
+      
+      <div style="margin-top: 1.8rem;">
+        <div class="taskbar-reference">
+          <!-- 3.png = logo used in taskbar -->
+        
+    </section>
+
+    <!-- HOW TO DOWNLOAD = same DOWNLOAD ORBIT OS IMAGE section (anchor link) -->
+    <section id="howtodownload-section" class="section-card">
+      <h2>HOW TO DOWNLOAD ORBIT OS IMAGE</h2>
+      <p class="text-content">To obtain the official Orbit OS ISO, navigate to the <strong>Download</strong> section above or use the direct button. The image is provided as a hybrid ISO suitable for USB installation or virtual machine deployment.</p>
+      <p class="text-content"><strong>Steps:</strong><br>1. Click the "DOWNLOAD ISO" button in the Download section.<br>2. Verify the SHA256 checksum against the published signature.<br>3. Write the image to a USB drive using rufus or balena etcher on windows, mac or linux.<br>4. Boot from the media and follow the installation wizard.</p>
+
+    </section>
+  </main>
+
+  <!-- CONTACT = footer (id used for anchor) -->
+  <footer id="contact-footer" class="government-footer">
+    <div>ORBIT OS </div>
+      <span>Email: not available | Phone: not available</span>
     </div>
-</div>
-
-  <footer class="footer">
-    <p>&copy; 2025 UR Frequency. </p><p>A group from UR Industries</p> <p>All rights reserved.</p>
   </footer>
- 
-  </body>
-  
-  <script>
-      
-      
-      document.querySelector('.menu-icon').addEventListener('click', function() {
-    document.querySelector('.nav-menu').classList.toggle('open');
-});
-
-  </script>
+</body>
+</html>
